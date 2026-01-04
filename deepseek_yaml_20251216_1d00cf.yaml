@@ -1,0 +1,25 @@
+# CI/CD Pipeline Configuration
+test:
+  name: "${TEST_NAME:-CI Load Test}"
+  environment: "${ENVIRONMENT:-CI}"
+  apdex_threshold: 1.5
+
+input:
+  file: "${INPUT_FILE:-jmeter_results.csv}"
+
+output:
+  html: "${WORKSPACE}/reports/load_test_${BUILD_NUMBER}.html"
+  excel: "${WORKSPACE}/reports/load_test_${BUILD_NUMBER}.xlsx"
+
+sla:
+  file: "config/production_sla.json"  # Reference external SLA file
+
+infrastructure:
+  files:
+    - "${WORKSPACE}/metrics/*.json"
+
+options:
+  excel_only: false
+  enable_container_analysis: true
+  generate_summary_json: true
+  summary_json: "${WORKSPACE}/reports/summary_${BUILD_NUMBER}.json"

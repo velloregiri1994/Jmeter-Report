@@ -1,0 +1,26 @@
+# Full JMeter Analysis Configuration
+test:
+  name: "Load Test"
+  environment: "Pre-production"
+  apdex_threshold: 2.0
+
+input:
+  file: "/Users/girireddy/Documents/PythonProject/Jmeter-Report/loadtest_20Nov.csv"
+  baseline: ""
+
+output:
+  html: "/Users/girireddy/Downloads/report-timechanges3.html"
+  excel: "/Users/girireddy/Downloads/report-timechanges2.xlsx"
+  timestamp_format: "%Y%m%d_%H%M%S"
+
+sla:
+  config:
+    "*":
+      p95_ms: 3000
+      error_rate: 10
+      avg_ms: 2000
+
+infrastructure:
+  files:
+    - "/Users/girireddy/Documents/PythonProject/Jmeter-Report/cpu-loadtest.json"
+    - "/Users/girireddy/Documents/PythonProject/Jmeter-Report/memory-loadtest.json"
