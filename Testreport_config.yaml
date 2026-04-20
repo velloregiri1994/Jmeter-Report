@@ -1,0 +1,44 @@
+PROJECT_CONFIG:
+  BCS:
+    cluster: stage-eu-central-1-rg8mt
+    namespace: boarding-bcs-ppe
+    workloads:
+      - bcs-kafka-message-handler
+      - bcs-order-management-aggregator-api
+      - bcs-order-manager-publisher-api
+      - bcs-order-manager-service
+      - bcs-outlet-creation-microservice
+      - bcs-product-catalogue-service
+      - order-management-bg-service
+  BIS:
+    cluster: stage-eu-central-1-rg8mt
+    namespace: boarding-bis-ppe
+    workloads:
+      - appboardingentrypoint-api
+      - autoboardingaction-service
+      - autoboardingworker-service
+      - boardingemailaction-service
+      - boardinggatewayactiongenerator-service
+      - cddchecksaction-service
+      - cddprocessor-service
+      - collaborationactionworker-api
+      - customerthankyouemailaction-service
+      - ordermanagementaction-service
+  POLARIS:
+    cluster: stage-eu-central-1-rg8mt
+    namespace: polaris-service-ppe
+    workloads:
+      - fis-polaris-mcc-api
+
+# Optional global Sysdig settings (overrides hardcoded defaults)
+sysdig:
+  api_url: "https://app.sysdigcloud.com/prometheus/api/v1"
+  api_token: "your-api-token-here"
+  step: "10"
+
+# Optional JMeter file paths (can be overridden by CLI)
+jmeter:
+  load_test_csv: "/path/to/load.csv"
+  soak_test_csv: "/path/to/soak.csv"
+  template_docx: "/path/to/template.docx"
+  output_docx: "/path/to/report.docx"
